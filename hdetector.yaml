@@ -1,0 +1,6 @@
+train: training/
+val: validation/
+
+nc: 1
+
+names: ['hyperbola']

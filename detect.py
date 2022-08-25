@@ -86,6 +86,7 @@ def run(weights=ROOT / 'yolov3.pt',  # model.pt path(s)
     if pt:
         model.model.half() if half else model.model.float()
 
+    # Keep the loop running from here
     # Dataloader
     if webcam:
         view_img = check_imshow()
@@ -236,7 +237,6 @@ def run(weights=ROOT / 'yolov3.pt',  # model.pt path(s)
 
     return returnFile
 
-
 def parse_opt():
     parser = argparse.ArgumentParser()
     parser.add_argument('--weights', nargs='+', type=str, default=ROOT / 'yolov3.pt', help='model path(s)')
@@ -268,7 +268,6 @@ def parse_opt():
     opt.imgsz *= 2 if len(opt.imgsz) == 1 else 1  # expand
     print_args(FILE.stem, opt)
     return opt
-
 
 def main(opt):
     check_requirements(exclude=('tensorboard', 'thop'))
@@ -305,7 +304,7 @@ def fromR(filename):
     arguments['source'] = filename
     return run(**arguments)
 
-if __name__ == "__main__":
-    opt = parse_opt()
-    print(f'{opt}, \n {type(opt)}')
-    print(main(opt))
+# if __name__ == "__main__":
+#     opt = parse_opt()
+#     print(f'{opt}, \n {type(opt)}')
+#     print(main(opt))
